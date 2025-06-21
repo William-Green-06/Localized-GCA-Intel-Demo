@@ -1,0 +1,218 @@
+/* Add your CSS here */
+/* Add your custom font using @font-face */
+@font-face {
+  font-family: 'IntelOneMono';        /* Give your font a name */
+  src: url('fonts/IntelOneMono-Regular.ttf'); /* Path to your .ttf file */
+  font-weight: normal;                /* Normal weight */
+}
+
+@font-face {
+  font-family: 'IntelOneMono';        /* Give your font a name */
+  src: url('fonts/IntelOneMono-Bold.ttf'); /* Path to your .ttf file */
+  font-weight: bold;                /* Bold weight */
+}
+
+/* This styles the top navigation bar */
+.navbar {
+  background-color: #0071c5; /* Intel blue color */
+  padding: 10px 0;           /* Space above and below the logo */
+  position: fixed;           /* Keeps the bar at the top of the page */
+  width: 100%;               /* Makes the bar stretch across the page */
+  top: 0;                    /* Positions the bar at the very top */
+  left: 0;
+  z-index: 1000;             /* Makes sure the bar stays above other content */
+  text-align: left;        /* Centers the logo inside the bar */
+}
+
+/* This makes the logo image smaller and adds space on the left */
+.navbar img {
+  height: 40px;              /* Sets the logo height */
+  vertical-align: middle;    /* Aligns the logo nicely in the bar */
+  margin-left: 16px;         /* Adds space between the logo and the left edge */
+}
+
+/* Make the header area tall for the background image */
+.header-content {
+  position: relative;
+  overflow: hidden;  /* Ensures content doesn't overflow */
+  padding-top: 150px;    /* Makes the image area tall */
+  padding-bottom: 120px; /* Space at the bottom */
+  text-align: center;   /* Center the text */
+  color: white;
+  width: 100vw;
+  margin-top: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.header-content::before {
+  content: "";                                         /* Creates the pseudo-element */
+  position: absolute;                                  /* Position it over the header */
+  top: 0; left: 0; right: 0; bottom: 0;                /* Cover the whole header */
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* Dark overlay */
+    url('img/header-bg.avif');                          /* Your background image */
+  background-size: cover;                              /* Cover the area */
+  background-position: center;                         /* Center the image */
+  z-index: 0;                                          /* Place behind the text */
+  transition: transform 0.4s ease;                     /* Smooth zoom effect */
+}
+
+/* When you hover over the header, zoom in the background */
+.header-content:hover::before {
+  transform: scale(1.1);   /* Slightly zoom in the background */
+}
+
+/* Make sure the header text is above the background */
+.header-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove extra space above the header text */
+.header-content h1,
+.header-content p {
+  margin-top: 0; /* No space above the text */
+  margin-left: 25vw;
+  margin-right: 25vw;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Adds a shadow for better readability */
+}
+
+/* On small screens, center the logo */
+@media (max-width: 600px) {
+  .navbar {
+    text-align: center;      /* Center the logo in the navbar */
+  }
+  .navbar img {
+    margin-left: 0;          /* Remove left margin when centered */
+  }
+}
+
+/* Make sure everything uses border-box sizing */
+* {
+  box-sizing: border-box; /* Makes width and padding work together */
+}
+
+body {
+  font-family: "IntelOneMono", 'Trebuchet MS', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+/* Make images responsive so they don't overflow */
+img {
+  max-width: 100%; /* Image can't be wider than its container */
+  height: auto;    /* Keeps the image's aspect ratio */
+}
+
+/* Optional: Make sure sections and divs don't overflow */
+section, div {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Timeline cards container: horizontal scroll on big screens */
+.timeline-cards {
+  display: flex;              /* Arrange cards in a row */
+  overflow-x: auto;           /* Allow horizontal scrolling */
+  gap: 16px;                  /* Space between cards */
+  padding: 16px 0;            /* Space above and below the cards */
+  margin-left: 12px;
+  margin-right: 12px;
+  align-items: flex-start;    /* Cards align at the top, can grow independently */
+}
+
+/* Each card: add transition for size and shadow */
+.timeline-cards > div {
+  width: 450px;                /* Fixed width for each card */
+  background: #f5f5f5;         /* Light background color */
+  border-radius: 8px;          /* Rounded corners */
+  padding: 16px;               /* Space inside each card */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08); /* Soft shadow */
+  flex-shrink: 0;              /* Prevent cards from shrinking */
+  box-sizing: border-box;      /* Makes padding work as expected */
+  transition: 
+    transform 0.2s ease,       /* Smoothly grow/shrink the card */
+    box-shadow 0.2s ease;      /* Smoothly animate the shadow */
+}
+
+/* When you hover over a card, make it grow and add a bigger shadow */
+.timeline-cards > div:hover {
+  transform: scale(1.07);      /* Grows the card a bit */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); /* Bigger, darker shadow */
+  margin-bottom: 4px;
+}
+
+/* Hide all paragraphs inside timeline cards by default, but fade in on hover */
+.timeline-cards > div p {
+  display: block;              /* Keep as block for animation */
+  opacity: 0;                  /* Start invisible */
+  max-height: 0;               /* Hide the text */
+  overflow: hidden;            /* Hide overflow */
+  transition: 
+    opacity 0.2s ease,         /* Fade in/out */
+    max-height 0.2s ease;      /* Slide open/closed */
+}
+
+/* Show and fade in the paragraph when you hover over the card */
+.timeline-cards > div:hover p {
+  opacity: 1;                  /* Fade in */
+  max-height: 200px;           /* Show the text (adjust as needed) */
+}
+
+/* Center the header text */
+.header-text {
+  text-align: center;   /* Center the text */
+}
+
+/* Add a solid black line below the h2 and keep it centered */
+.header-text h2 {
+  margin: 0 auto 6px auto;      /* Center the h2 and add space below */
+  border-bottom: 2px solid #000;/* Solid black line under the text */
+  display: block;               /* Makes h2 take up the full width */
+  width: max-content;           /* Only as wide as the text */
+  padding-bottom: 2px;          /* Space between text and line */
+  color: #0071c5;
+}
+
+/* Optional: Reduce space above and below h3 for a tighter look */
+.header-text h3 {
+  margin-top: 0px;    /* Small space above h3 */
+  margin-bottom: 6px;   /* No extra space below h3 */
+}
+
+/* On small screens, stack cards vertically */
+@media (max-width: 600px) {
+  .header-content h1 {
+    font-size: 1.6em;   /* Make the title smaller */
+    text-align: center; /* Make sure it's centered */
+  }
+  .timeline-cards {
+    flex-direction: column;   /* Stack cards top to bottom */
+    overflow-x: visible;      /* No horizontal scroll */
+    gap: 12px;                /* Less space between cards */
+  }
+  .timeline-cards > div {
+    min-width: 0;             /* Allow cards to shrink to fit */
+    width: 100%;              /* Cards take full width */
+  }
+}
+
+#helper-text {
+  padding: 10px;
+}
+
+/* Only enable scroll snapping on screens wider than 600px */
+@media (min-width: 601px) {
+  .timeline-cards {
+    scroll-snap-type: x mandatory; /* Enable horizontal snap */
+
+  }
+  .timeline-cards > div {
+    scroll-snap-align: start;      /* Snap each card to the start */
+  }
+}
