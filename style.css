@@ -50,7 +50,7 @@
   position: absolute;                                  /* Position it over the header */
   top: 0; left: 0; right: 0; bottom: 0;                /* Cover the whole header */
   background-image: 
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* Dark overlay */
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0,0,0,0.75)), /* Dark overlay */
     url('img/header-bg.avif');                          /* Your background image */
   background-size: cover;                              /* Cover the area */
   background-position: center;                         /* Center the image */
@@ -75,7 +75,7 @@
   margin-top: 0; /* No space above the text */
   margin-left: 25vw;
   margin-right: 25vw;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Adds a shadow for better readability */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.685); /* Adds a shadow for better readability */
 }
 
 /* On small screens, center the logo */
